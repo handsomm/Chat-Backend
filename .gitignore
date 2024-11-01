@@ -39,8 +39,7 @@ db.sqlite3
 
 # Django stuff:
 *.env
-.env.*
-*.local
+.env
 
 # Testing
 .coverage
