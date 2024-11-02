@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ljb$1r!2zy#q0=(^$@wsu)xm85)1oyduv#(z042^hv$c3k@7s_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["api.soumya.fun"]
 
 
 # Application definition
