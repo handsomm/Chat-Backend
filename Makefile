@@ -23,3 +23,6 @@ run:
 clean:
 	docker-compose -f docker-compose.yml -p ${NAME} stop pg api adminer || true
 	docker-compose -f docker-compose.yml -p ${NAME} rm -f pg api adminer || true
+
+log:
+	docker-compose -f docker-compose.yml -p ${NAME} logs -f api

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ljb$1r!2zy#q0=(^$@wsu)xm85)1oyduv#(z042^hv$c3k@7s_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["api.soumya.fun"]
+ALLOWED_HOSTS = ["api.soumya.fun", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 
     'rest_framework',
     'users',
@@ -46,12 +47,15 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS= True
 
 ROOT_URLCONF = 'ChatBackend.urls'
 
@@ -127,7 +131,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-FCM_SERVICE_ACCOUNT_KEY_PATH = "/Users/soumyaranjanbehera/Projects/Chat/ChatBackend/unitytalk-8270d-firebase-adminsdk-mhfhx-6924eaa6cd.json"
+FCM_SERVICE_ACCOUNT_KEY_PATH = BASE_DIR / 'unitytalk-8270d-firebase-adminsdk-mhfhx-6924eaa6cd.json'
 FCM_PROJECT_ID = "unitytalk-8270d"  # The project ID from your Firebase console
 
 AUTH_USER_MODEL = 'users.CustomUser'
