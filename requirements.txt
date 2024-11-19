@@ -9,8 +9,10 @@ google-auth==2.34.0
 gunicorn==23.0.0
 idna==3.8
 packaging==24.1
+psycopg2-binary==2.9.10
 pyasn1==0.6.0
 pyasn1_modules==0.4.0
+python-dotenv==1.0.1
 requests==2.32.3
 rsa==4.9
 sqlparse==0.5.1
