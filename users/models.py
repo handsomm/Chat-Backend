@@ -1,8 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 import uuid
-
-from django.contrib.auth.models import BaseUserManager
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -25,9 +23,19 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(email, password, **extra_fields)
 
+    def activate(self, user):
+        """
+        Activates a user by setting their status to 'active'.
+        """
+        if user.status != 'active':
+            user.status = 'active'
+            user.save(using=self._db)
+            return user
+        return None
 
 class CustomUser(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(unique=True)
     profile_image = models.URLField(null=True, blank=True)
     STATUS_CHOICES = [
@@ -47,3 +55,12 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+    def activate(self, user):
+        """
+        Activates a user by setting their status to 'active'.
+        """
+        if user.status != 'active':
+            user.status = 'active'
+            user.save(using=self._db)
+            return user
+        return None

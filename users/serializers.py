@@ -6,7 +6,7 @@ from rest_framework.exceptions import AuthenticationFailed
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'profile_image', 'status')
+        fields = ('id', 'email', 'username', 'name', 'first_name', 'last_name', 'profile_image', 'status')
         read_only_fields = ('id', 'status')
 
 
